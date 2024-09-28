@@ -6,11 +6,10 @@ const SUCCESS_COLOR = '#59A10D';
 const TOAST_TIMEOUT = 3000;
 const TOAST_POSITION = 'topRight';
 
-export function showToast(type, message, iconUrl) {
+export function showToast(type, message, iconPath) {
   const options = {
     message,
     timeout: TOAST_TIMEOUT,
-    iconUrl,
     iconColor: 'white',
     messageColor: 'white',
     position: TOAST_POSITION,
@@ -18,8 +17,16 @@ export function showToast(type, message, iconUrl) {
   };
 
   if (type === 'success') {
-    iziToast.success({ ...options, backgroundColor: SUCCESS_COLOR });
+    iziToast.success({
+      ...options,
+      iconUrl: new URL(iconPath, import.meta.url).href,
+      backgroundColor: SUCCESS_COLOR,
+    });
   } else if (type === 'error') {
-    iziToast.error({ ...options, backgroundColor: ERROR_COLOR });
+    iziToast.error({
+      ...options,
+      iconUrl: new URL(iconPath, import.meta.url).href,
+      backgroundColor: ERROR_COLOR,
+    });
   }
 }
