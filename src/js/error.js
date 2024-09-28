@@ -9,7 +9,7 @@ export function showError(message) {
     titleColor: 'white',
     messageColor: 'white',
     iconColor: 'white',
-    iconUrl: './img/error-icon.svg',
+    iconUrl: new URL('../img/error-icon.svg', import.meta.url).href,
     class: 'custom-toast',
     position: 'topRight',
     timeout: 5000,
