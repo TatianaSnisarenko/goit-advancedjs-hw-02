@@ -34,7 +34,10 @@ function makePromise({ delay, shouldResolve = true }) {
         message: `${
           shouldResolve ? 'Fulfilled' : 'Rejected'
         } promise in ${delay}ms`,
-        iconUrl: shouldResolve ? './img/ok-icon.svg' : './img/fail-icon.svg',
+        iconUrl: new URL(
+          shouldResolve ? '../img/ok-icon.svg' : '../img/fail-icon.svg',
+          import.meta.url
+        ).href,
       };
       shouldResolve ? resolve(result) : reject(result);
     }, delay);
