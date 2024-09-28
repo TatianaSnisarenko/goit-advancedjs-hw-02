@@ -7,26 +7,15 @@ const TOAST_TIMEOUT = 3000;
 const TOAST_POSITION = 'topRight';
 
 export function showToast(type, message, iconPath) {
-  const options = {
+  const color = type === 'success' ? SUCCESS_COLOR : ERROR_COLOR;
+  iziToast.show({
     message,
     timeout: TOAST_TIMEOUT,
     iconColor: 'white',
     messageColor: 'white',
     position: TOAST_POSITION,
     close: false,
-  };
-
-  if (type === 'success') {
-    iziToast.success({
-      ...options,
-      iconUrl: new URL(iconPath, import.meta.url).href,
-      backgroundColor: SUCCESS_COLOR,
-    });
-  } else if (type === 'error') {
-    iziToast.error({
-      ...options,
-      iconUrl: new URL(iconPath, import.meta.url).href,
-      backgroundColor: ERROR_COLOR,
-    });
-  }
+    iconUrl: new URL(iconPath, import.meta.url).href,
+    backgroundColor: color,
+  });
 }
