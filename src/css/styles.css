@@ -4,8 +4,7 @@
 @import url('./container.css');
 
 /* Sections style */
-@import 'simplelightbox/dist/simple-lightbox.min.css';
 @import url('./menu.css');
 @import url('./index.css');
-@import url('./gallery.css');
-@import url('./form.css');
+@import url('./timer.css');
+@import url('./snackbar.css');
