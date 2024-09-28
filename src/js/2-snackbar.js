@@ -30,14 +30,14 @@ function handleSubmit(e) {
 function makePromise({ delay, shouldResolve = true }) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      const iconPath = shouldResolve
+        ? '../img/ok-icon.svg'
+        : '../img/fail-icon.svg';
       const result = {
         message: `${
           shouldResolve ? 'Fulfilled' : 'Rejected'
         } promise in ${delay}ms`,
-        iconUrl: new URL(
-          shouldResolve ? '../img/ok-icon.svg' : '../img/fail-icon.svg',
-          import.meta.url
-        ).href,
+        iconUrl: new URL(iconPath, import.meta.url).href,
       };
       shouldResolve ? resolve(result) : reject(result);
     }, delay);
