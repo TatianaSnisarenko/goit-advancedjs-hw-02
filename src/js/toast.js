@@ -8,11 +8,14 @@ const TOAST_POSITION = 'topRight';
 const icons = {
   success: new URL('../img/ok-icon.svg', import.meta.url).href,
   fail: new URL('../img/fail-icon.svg', import.meta.url).href,
+  error: new URL('../img/error-icon.svg', import.meta.url).href,
 };
 
-export function showToast(type, message) {
+export function showToast(type, message, title = '') {
   const color = type === 'success' ? SUCCESS_COLOR : ERROR_COLOR;
   iziToast.show({
+    title,
+    titleColor: 'white',
     message,
     timeout: TOAST_TIMEOUT,
     iconColor: 'white',

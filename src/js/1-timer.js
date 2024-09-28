@@ -3,8 +3,9 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 import '../css/styles.css';
 import '../css/error.css';
-import { showError } from './error';
+
 import { fillTimer } from './fill-timer';
+import { showToast } from './toast';
 
 const dateTimePicker = document.querySelector('input#datetime-picker');
 const startButton = document.querySelector('button[data-start]');
@@ -18,7 +19,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < currentDate.getTime()) {
-      showError('Please, choose a date in the future ');
+      showToast('error', 'Please, choose a date in the future', 'Error');
       startButton.disabled = true;
       startButton.removeEventListener('click', startTimer);
     } else {
