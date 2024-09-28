@@ -1,0 +1,23 @@
+.gallery {
+  display: flex;
+  max-width: 1440px;
+  padding: 24px 156px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.gallery-main {
+  margin-top: 60px;
+}
+
+.gallery-item {
+  flex-basis: calc((100% - 24px * 2) / 3);
+}
+
+.gallery-link:hover {
+  cursor: url('../img/pointer.svg'), auto;
+}
