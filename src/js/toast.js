@@ -5,8 +5,12 @@ const ERROR_COLOR = '#ef4040';
 const SUCCESS_COLOR = '#59A10D';
 const TOAST_TIMEOUT = 3000;
 const TOAST_POSITION = 'topRight';
+const icons = {
+  success: new URL('../img/ok-icon.svg', import.meta.url).href,
+  fail: new URL('../img/fail-icon.svg', import.meta.url).href,
+};
 
-export function showToast(type, message, iconPath) {
+export function showToast(type, message) {
   const color = type === 'success' ? SUCCESS_COLOR : ERROR_COLOR;
   iziToast.show({
     message,
@@ -15,7 +19,7 @@ export function showToast(type, message, iconPath) {
     messageColor: 'white',
     position: TOAST_POSITION,
     close: false,
-    iconUrl: new URL(iconPath, import.meta.url).href,
+    iconUrl: icons[type],
     backgroundColor: color,
   });
 }

@@ -21,8 +21,8 @@ function handleSubmit(e) {
   const state = stateInput.value;
 
   makePromise({ delay, shouldResolve: state === FULFILLED })
-    .then(({ message, iconPath }) => showToast('success', message, iconPath))
-    .catch(({ message, iconPath }) => showToast('error', message, iconPath));
+    .then(({ message }) => showToast('success', message))
+    .catch(({ message }) => showToast('fail', message));
 
   form.reset();
 }
@@ -34,7 +34,6 @@ function makePromise({ delay, shouldResolve = true }) {
         message: `${
           shouldResolve ? 'Fulfilled' : 'Rejected'
         } promise in ${delay}ms`,
-        iconPath: shouldResolve ? '../img/ok-icon.svg' : '../img/fail-icon.svg',
       };
       shouldResolve ? resolve(result) : reject(result);
     }, delay);
